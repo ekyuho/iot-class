@@ -16,5 +16,5 @@ void setup() {
 void loop() {
   sensors.requestTemperatures();
   float tempC = sensors.getTempCByIndex(0);
-  Serial.printf("temp=%.1f\n", tempC);
+  Serial.printf("temp= %.1f\n", tempC);
 }
