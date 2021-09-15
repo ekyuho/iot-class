@@ -31,7 +31,6 @@ void loop() {
     HTTPClient http;
 
     sensors.requestTemperatures();
-    delay(1000);
     float tempC = sensors.getTempCByIndex(0);
     Serial.printf("temp=%.1f\n", tempC);
  
