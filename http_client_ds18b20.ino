@@ -13,6 +13,7 @@ const char* password =  "0317137263";
 void setup() {
   Serial.begin(115200);
   delay(1000);
+  Serial.println();
   WiFi.begin(ssid, password);
  
   while (WiFi.status() != WL_CONNECTED) {
@@ -24,6 +25,7 @@ void setup() {
   Serial.print(", ");
   Serial.println(WiFi.macAddress());
   sensors.begin();
+  Serial.println("Begin");
 }
  
 void loop() {
@@ -31,10 +33,11 @@ void loop() {
     HTTPClient http;
 
     sensors.requestTemperatures();
+    delay(1000);
     float tempC = sensors.getTempCByIndex(0);
     Serial.printf("temp=%.1f\n", tempC);
  
-    http.begin("http://1ba3-35-193-131-231.ngrok.io/?temp="+String(tempC));
+    http.begin("http://84dc-35-193-131-231.ngrok.io:80/?temp="+String(tempC));
     int httpCode = http.GET();
  
     if (httpCode > 0) {
@@ -47,5 +50,5 @@ void loop() {
     }
     http.end();
   }
-  delay(5000);
+  delay(2000);
 }
